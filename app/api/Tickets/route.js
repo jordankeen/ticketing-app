@@ -1,7 +1,9 @@
-import Ticket from "../(models)/Ticket";
+import Ticket from "@/app/(models)/Ticket";
 import { NextResponse } from "next/server";
 
-// add tickets
+// Ticket Routes
+
+// Add
 export async function POST(req) {
    try {
       const body = await req.json()

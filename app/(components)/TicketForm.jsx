@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const TicketForm = () => {
+   const router = useRouter()
+
    // default form state
    const startingTicketData = {
       title: "",
@@ -25,9 +27,21 @@ const TicketForm = () => {
       }));
    }
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log('submitted');
+      const res = await fetch('/api/Tickets', {
+         method: "POST",
+         body: JSON.stringify({ formData }),
+         "content-type": "application/json"
+      })
+
+      if (!res.ok) {
+         throw new Error('Failed to create ticket');
+      }
+
+      // Send user back to home page
+      router.refresh()
+      router.push("/")
    }
 
    return (
@@ -115,7 +129,7 @@ const TicketForm = () => {
                />
                <label>5</label>
             </div>
-            <label htmlFor="progress">Progress</label>
+            <label htmlFor="progress">Progress: {formData.progress}</label>
             <input
                type="range"
                id="progress"
