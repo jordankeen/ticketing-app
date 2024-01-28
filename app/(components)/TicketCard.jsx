@@ -15,8 +15,17 @@ const TicketCard = () => {
          <h4>Ticket Title</h4>
          <h4 className='h-px border-0 bg-page mb-2' />
          <p className='whitespace-pre-wrap'>This is the description</p>
-         <ProgressDisplay />
-         <StatusDisplay />
+         {/* bellow flex grow element ensures elements are same height regardless of contentxs */}
+         <div className='flex-grow'></div>
+         <div className='flex mt-2'>
+            <div className='flex flex-col'>
+               <p className='text-xs my-1'>08/31/23 10:43PM</p>
+               <ProgressDisplay />
+            </div>
+            <div className='ml-auto flex items-end'>
+               <StatusDisplay />
+            </div>
+         </div>
       </div>
    )
 }
