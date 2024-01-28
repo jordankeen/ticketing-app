@@ -12,6 +12,9 @@ const TicketCard = () => {
                <DeleteBlock />
             </div>
          </div>
+         <h4>Ticket Title</h4>
+         <h4 className='h-px border-0 bg-page mb-2' />
+         <p className='whitespace-pre-wrap'>This is the description</p>
          <ProgressDisplay />
          <StatusDisplay />
       </div>
